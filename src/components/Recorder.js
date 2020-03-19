@@ -4,6 +4,7 @@ import { FaTimes } from "react-icons/fa";
 import { FaStop } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
 import { FaPlay } from "react-icons/fa";
+import './../styles/style.scss'
 const audioType = "audio/*";
 
 class Recorder extends Component {
