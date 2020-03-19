@@ -1,0 +1,46 @@
+{
+    "name": "react-voice-recorder",
+    "version": "1.0.0",
+    "description": "This (react-voice-recorder) is a JavaScript library for React Applicaiton which will be used to record voice as audio and download the same.",
+    "main": "./build/index.js",
+    "license": "MIT",
+    "keywords": [
+        "react",
+        "FormInputs"
+    ],
+    "homepage": "https://www.npmjs.com/package/react-input-textboxs",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sivaprakashDesingu/react-input-textboxs.git"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "webpack"
+    },
+    "peerDependencies": {
+        "prop-types": "^15.6.0",
+        "react": "^16.0.0",
+        "react-icons": "3.6.1",
+        "react-dom": "^16.0.0"
+    },
+    "devDependencies": {
+        "babel-core": "^6.21.0",
+        "babel-loader": "^7.1.4",
+        "babel-preset-env": "^1.6.1",
+        "babel-preset-react": "^6.16.0",
+        "babel-preset-stage-0": "^6.24.1",
+        "css-loader": "^3.4.2",
+        "node-sass": "^4.13.1",
+        "path": "^0.12.7",
+        "prop-types": "^15.6.0",
+        "react": "^16.0.0",
+        "react-dom": "^16.0.0",
+        "sass-loader": "^8.0.2",
+        "style-loader": "^1.1.3",
+        "webpack": "^4.41.6",
+        "webpack-cli": "^3.2.1"
+    },
+    "dependencies": {
+        "react-icons": "^3.9.0"
+    }
+}
