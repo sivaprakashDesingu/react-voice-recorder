@@ -1,12 +1,3 @@
-import React, { Component } from "react";
-import { FaMicrophone } from "react-icons/fa";
-import { FaTimes } from "react-icons/fa";
-import { FaStop } from "react-icons/fa";
-import { FaPause } from "react-icons/fa";
-import { FaPlay } from "react-icons/fa";
-import './../styles/style.scss'
-const audioType = "audio/*";
-
 class Recorder extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +7,8 @@ class Recorder extends Component {
       isPaused: false,
       recording: false,
       medianotFound: false,
-      audios: []
+      audios: [],
+      audioBlob: null
     };
     this.timer = 0;
     this.startTimer = this.startTimer.bind(this);
@@ -120,7 +112,7 @@ class Recorder extends Component {
     const audioURL = window.URL.createObjectURL(blob);
     // append videoURL to list of saved videos for rendering
     const audios = [audioURL];
-    this.setState({ audios });
+    this.setState({ audios, audioBlob: blob });
     this.props.handleAudioStop({
       url: audioURL,
       blob: blob,
@@ -131,7 +123,7 @@ class Recorder extends Component {
 
   render() {
     const { recording, audios, time, medianotFound, pauseRecord } = this.state;
-    const { showUIAudio, title } = this.props;
+    const { showUIAudio, title, audioURL } = this.props;
     return (
       <div className="recorder-library-box">
         <div className="recorder-box">
@@ -144,9 +136,23 @@ class Recorder extends Component {
             </div>
             {!medianotFound ? (
               <div className="record-section">
+                <div className="btn-wrapper">
+                  <button
+                    onClick={() => this.props.handleAudioUpload(this.state)}
+                    className="btn upload-btn"
+                  >
+                    Upload
+                  </button>
+                  <button
+                    onClick={() => this.props.handleRest()}
+                    className="btn clear-btn"
+                  >
+                    Clear
+                  </button>
+                </div>
                 <div className="duration-section">
                   <div className="audio-section">
-                    {audios.length >= 1 && showUIAudio ? (
+                    {audioURL !== null && showUIAudio ? (
                       <audio controls>
                         <source src={audios[0]} type="audio/ogg" />
                         <source src={audios[0]} type="audio/mpeg" />
@@ -179,33 +185,33 @@ class Recorder extends Component {
                     <FaMicrophone />
                   </a>
                 ) : (
-                  <div className="record-controller">
-                    <a
-                      onClick={e => this.stopRecording(e)}
-                      href=" #"
-                      className="icons stop"
-                    >
-                      <FaStop />
-                    </a>
-                    <a
-                      onClick={
-                        !pauseRecord
-                          ? e => this.handleAudioPause(e)
-                          : e => this.handleAudioStart(e)
-                      }
-                      href=" #"
-                      className="icons pause"
-                    >
-                      {pauseRecord ? <FaPlay /> : <FaPause />}
-                    </a>
-                  </div>
-                )}
+                    <div className="record-controller">
+                      <a
+                        onClick={e => this.stopRecording(e)}
+                        href=" #"
+                        className="icons stop"
+                      >
+                        <FaStop />
+                      </a>
+                      <a
+                        onClick={
+                          !pauseRecord
+                            ? e => this.handleAudioPause(e)
+                            : e => this.handleAudioStart(e)
+                        }
+                        href=" #"
+                        className="icons pause"
+                      >
+                        {pauseRecord ? <FaPlay /> : <FaPause />}
+                      </a>
+                    </div>
+                  )}
               </div>
             ) : (
-              <p style={{ color: "#fff", marginTop: 30, fontSize: 25 }}>
-                Seems the site is Non-SSL
+                <p style={{ color: "#fff", marginTop: 30, fontSize: 25 }}>
+                  Seems the site is Non-SSL
               </p>
-            )}
+              )}
           </div>
         </div>
       </div>
