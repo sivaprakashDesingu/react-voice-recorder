@@ -23,12 +23,20 @@ Checkout the [Demo](hhttps://codesandbox.io/s/cool-elbakyan-1hx5z)
 handleAudioStop(data){
     console.log(data)
 }
-
+handleAudioUpload(file) {
+    console.log(file);
+  }
+handleRest() {
+    this.setState({ audioURL: null });
+}
 <Recorder
     record={true}
     title={"New recording"}
+    audioURL={this.state.audioURL}
     showUIAudio
     handleAudioStop={data => this.handleAudioStop(data)}
+    handleAudioUpload={data => this.handleAudioUpload(data)}
+    handleRest={() => this.handleRest()}    
 />
 
 ```

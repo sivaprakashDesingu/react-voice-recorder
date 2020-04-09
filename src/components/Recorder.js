@@ -138,7 +138,7 @@ class Recorder extends Component {
               <div className="record-section">
                 <div className="btn-wrapper">
                   <button
-                    onClick={() => this.props.handleAudioUpload(this.state)}
+                    onClick={() => this.props.handleAudioUpload(this.state.audioBlob)}
                     className="btn upload-btn"
                   >
                     Upload
