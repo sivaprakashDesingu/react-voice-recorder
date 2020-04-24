@@ -6,7 +6,7 @@ This (react-voice-recorder) is a JavaScript library for React Applicaiton which 
 
 # Demo
 
-Checkout the [Demo](https://codesandbox.io/s/cool-elbakyan-1hx5z)
+Checkout the [Demo](https://codesandbox.io/s/react-voice-recorder-mydov)
 
 # Installation
 
