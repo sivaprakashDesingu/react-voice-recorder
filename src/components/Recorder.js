@@ -16,7 +16,8 @@ class Recorder extends Component {
       isPaused: false,
       recording: false,
       medianotFound: false,
-      audios: []
+      audios: [],
+      audioBlob: null
     };
     this.timer = 0;
     this.startTimer = this.startTimer.bind(this);
@@ -113,6 +114,19 @@ class Recorder extends Component {
     this.saveAudio();
   }
 
+  handleRest() {
+    this.setState({
+      time: {},
+      seconds: 0,
+      isPaused: false,
+      recording: false,
+      medianotFound: false,
+      audios: [],
+      audioBlob: null
+    });
+    this.props.handleRest(this.state);
+  }
+
   saveAudio() {
     // convert saved chunks to blob
     const blob = new Blob(this.chunks, { type: audioType });
@@ -120,7 +134,7 @@ class Recorder extends Component {
     const audioURL = window.URL.createObjectURL(blob);
     // append videoURL to list of saved videos for rendering
     const audios = [audioURL];
-    this.setState({ audios });
+    this.setState({ audios, audioBlob: blob });
     this.props.handleAudioStop({
       url: audioURL,
       blob: blob,
@@ -131,7 +145,7 @@ class Recorder extends Component {
 
   render() {
     const { recording, audios, time, medianotFound, pauseRecord } = this.state;
-    const { showUIAudio, title } = this.props;
+    const { showUIAudio, title, audioURL } = this.props;
     return (
       <div className="recorder-library-box">
         <div className="recorder-box">
@@ -144,9 +158,25 @@ class Recorder extends Component {
             </div>
             {!medianotFound ? (
               <div className="record-section">
+                <div className="btn-wrapper">
+                  <button
+                    onClick={() =>
+                      this.props.handleAudioUpload(this.state.audioBlob)
+                    }
+                    className="btn upload-btn"
+                  >
+                    Upload
+                  </button>
+                  <button
+                    onClick={() => this.handleRest()}
+                    className="btn clear-btn"
+                  >
+                    Clear
+                  </button>
+                </div>
                 <div className="duration-section">
                   <div className="audio-section">
-                    {audios.length >= 1 && showUIAudio ? (
+                    {audioURL !== null && showUIAudio ? (
                       <audio controls>
                         <source src={audios[0]} type="audio/ogg" />
                         <source src={audios[0]} type="audio/mpeg" />

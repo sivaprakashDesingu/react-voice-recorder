@@ -118,4 +118,34 @@
   .duration-section .help {
     color: #fff;
   }
+
+  .btn-wrapper{
+    margin: 20px 30px;
+
+    .btn{
+      border: 0;
+      outline: 0;
+      padding: 10px 20px;
+      border-radius: 20px;
+      background: #185fec;
+      color: #fff;
+      cursor: pointer;
+      border:1px solid #185fec;
+      transition:.3s ease all;
+    }
+    .btn:hover{
+      background: #fff;
+      color: #185fec;
+    }
+    .clear-btn{
+      background: #fff;
+      color: #185fec;
+      margin-left:15px;
+    }
+    .clear-btn:hover{
+      background: #185fec;
+      color: #fff;
+    }
+  }
+  
 }
