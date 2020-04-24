@@ -6,7 +6,7 @@ This (react-voice-recorder) is a JavaScript library for React Applicaiton which 
 
 # Demo
 
-Checkout the [Demo](hhttps://codesandbox.io/s/cool-elbakyan-1hx5z)
+Checkout the [Demo](https://codesandbox.io/s/cool-elbakyan-1hx5z)
 
 # Installation
 
@@ -20,15 +20,47 @@ Checkout the [Demo](hhttps://codesandbox.io/s/cool-elbakyan-1hx5z)
 
 
 ```
+this.state = {
+    audioDetails: {
+        url: null,
+        blob: null,
+        chunks: null,
+        duration: {
+          h: 0,
+          m: 0,
+          s: 0
+        }
+      }
+}
 handleAudioStop(data){
     console.log(data)
+    this.setState({ audioDetails: data });
 }
+handleAudioUpload(file) {
+    console.log(file);
+}
+handleRest() {
+    const reset = {
+      url: null,
+      blob: null,
+      chunks: null,
+      duration: {
+        h: 0,
+        m: 0,
+        s: 0
+      }
+    };
+    this.setState({ audioDetails: reset });
+  }
 
 <Recorder
     record={true}
     title={"New recording"}
+    audioURL={this.state.audioDetails.url}
     showUIAudio
     handleAudioStop={data => this.handleAudioStop(data)}
+    handleAudioUpload={data => this.handleAudioUpload(data)}
+    handleRest={() => this.handleRest()} 
 />
 
 ```
@@ -40,8 +72,10 @@ Common props you may want to specify include:
 
 - `record` - Flag 
 - `title` - Title for the Model
+- `audioURL` - To hear what has been recorded.
 - `showUIAudio` - Either need to show HTML5 audio tag after stopped or not.
 - `handleAudioStop` - Once your are stop the record, this will send your the data to process. further
+- `handleAudioUpload` - Onced click the upload button, Blob will be passed via props 
 
 
 ## License
