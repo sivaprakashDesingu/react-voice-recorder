@@ -1,9 +1,148 @@
 /* add css module styles here (optional) */
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700&display=swap");
+.recorder_library_box,.recorder_library_box *{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Lato", sans-serif
+}
+.recorder_library_box .recorder_box{
+  width: 600px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+.recorder_library_box .recorder_box_inner {
+  min-height: 400px;
+  background: #212121;
+  border-radius: 0 0 3px 3px;
+  display: flex;
+  flex-direction: column;
+}
+.recorder_library_box  .mic_icon{
+  width: 60px;
+  display: flex;
+  height: 60px;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  background: rgb(245, 0, 87);
+  border-radius: 50%;
+  bottom: 65px;
+  right: 20%;
+  color: #fff;
+  font-size: 25px;
+}
+.recorder_library_box .reco_header{
+    display: flex;
+    justify-content: space-between;
+    background: #bd9f61;
+    align-items: center;
+    padding: 20px 20px;
+    color: #fff;
+    border-radius: 3px 3px 0 0;
+}
+.recorder_library_box .reco_header .h2 {
+  font-weight: 400;
+}
+.recorder_library_box .reco_header .close_icons {
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  transition: 0.5s ease all;
+}
+.recorder_library_box .reco_header .close_icons:hover {
+  background: rgba(123, 118, 106, 0.21);
+}
 
-.test {
-  margin: 2em;
-  padding: 0.5em;
-  border: 2px solid #000;
-  font-size: 2em;
-  text-align: center;
+.recorder_library_box .record_section {
+  position: relative;
+  flex: 1;
+}
+.recorder_library_box .record_section .mic_icon {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20px;
+}
+.recorder_library_box .record_section .duration_section {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 100px;
+}
+
+.recorder_library_box .btn_wrapper{
+  margin: 20px 30px;
+}
+.recorder_library_box .btn_wrapper .btn{
+  border: 0;
+  outline: 0;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background: #185fec;
+  color: #fff;
+  cursor: pointer;
+  border:1px solid #185fec;
+  transition:.3s ease all;
+}
+.recorder_library_box .btn_wrapper .btn:hover{
+  background: #fff;
+  color: #185fec;
+}
+.recorder_library_box .btn_wrapper .clear_btn{
+  background: #fff;
+  color: #185fec;
+  margin-left:15px;
+}
+.recorder_library_box .btn_wrapper .clear_btn:hover{
+  background: #185fec;
+  color: #fff;
+}
+.recorder_library_box .duration{
+  text-align:center;
+}
+.recorder_library_box .recorder_page_box {
+  min-height: calc(100vh - 128px);
+  background: #fff;
+}
+
+.recorder_library_box .duration * {
+  color: #fff;
+  font-size: 60px;
+}
+.recorder_library_box .duration_section .help {
+  color: #fff;
+}
+
+.recorder_library_box .record_controller {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 0px;
+  padding: 20px 0;
+  display: flex;
+}
+
+.recorder_library_box .record_controller .icons {
+  width: 50px;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #fff;
+  margin-right: 15px;
+  font-size: 20px;
+}
+
+.recorder_library_box .record_controller .stop {
+  background: #940505;
+}
+.recorder_library_box .record_controller .pause {
+  background: #9c6702;
 }
