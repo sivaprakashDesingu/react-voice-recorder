@@ -1,10 +1,15 @@
 import React, { Component } from "react";
-import { FaMicrophone } from "react-icons/fa";
+import microphone from './../imgs/microphone.png'
+import stopIcon from './../imgs/stop.png'
+import pauseIcons  from './../imgs/pause.png'
+import playIcons from './../imgs/play-button.png'
+import closeIcons from './../imgs/close.png'
+/*import { FaMicrophone } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
 import { FaStop } from "react-icons/fa";
 import { FaPause } from "react-icons/fa";
-import { FaPlay } from "react-icons/fa";
-import './../styles/style.scss'
+import { FaPlay } from "react-icons/fa";*/
+import styles from './../styles.module.css'
 const audioType = "audio/*";
 
 class Recorder extends Component {
@@ -147,35 +152,35 @@ class Recorder extends Component {
     const { recording, audios, time, medianotFound, pauseRecord } = this.state;
     const { showUIAudio, title, audioURL } = this.props;
     return (
-      <div className="recorder-library-box">
-        <div className="recorder-box">
-          <div className="recorder-box-inner">
-            <div className="reco-header">
-              <h2>{title}</h2>
-              <span className="close-icons">
-                <FaTimes />
+      <div className={styles.recorder_library_box}>
+        <div className={styles.recorder_box}>
+          <div className={styles.recorder_box_inner}>
+            <div className={styles.reco_header}>
+              <h2 className={styles.h2}>{title}</h2>
+              <span className={styles.close_icons}>
+              <img src={closeIcons} width={20} height={20} alt="Close icons" />
               </span>
             </div>
             {!medianotFound ? (
-              <div className="record-section">
-                <div className="btn-wrapper">
+              <div className={styles.record_section}>
+                <div className={styles.btn_wrapper}>
                   <button
                     onClick={() =>
                       this.props.handleAudioUpload(this.state.audioBlob)
                     }
-                    className="btn upload-btn"
+                    className={`${styles.btn} ${styles.upload_btn}`}
                   >
                     Upload
                   </button>
                   <button
                     onClick={() => this.handleRest()}
-                    className="btn clear-btn"
+                    className={`${styles.btn} ${styles.clear_btn}`}
                   >
                     Clear
                   </button>
                 </div>
-                <div className="duration-section">
-                  <div className="audio-section">
+                <div className={styles.duration_section}>
+                  <div className={styles.audio_section}>
                     {audioURL !== null && showUIAudio ? (
                       <audio controls>
                         <source src={audios[0]} type="audio/ogg" />
@@ -183,59 +188,62 @@ class Recorder extends Component {
                       </audio>
                     ) : null}
                   </div>
-                  <div className="duration">
-                    <span className="mins">
+                  <div className={styles.duration}>
+                    <span className={styles.mins}>
                       {time.m !== undefined
                         ? `${time.m <= 9 ? "0" + time.m : time.m}`
                         : "00"}
                     </span>
-                    <span className="divider">:</span>
-                    <span className="secs">
+                    <span className={styles.divider}>:</span>
+                    <span className={styles.secs}>
                       {time.s !== undefined
                         ? `${time.s <= 9 ? "0" + time.s : time.s}`
                         : "00"}
                     </span>
                   </div>
                   {!recording ? (
-                    <p className="help">Press the microphone to record</p>
+                    <p className={styles.help}>Press the microphone to record</p>
                   ) : null}
                 </div>
                 {!recording ? (
                   <a
                     onClick={e => this.startRecording(e)}
                     href=" #"
-                    className="mic-icon"
+                    className={styles.mic_icon}
                   >
-                    <FaMicrophone />
+                    <img src={microphone} width={30} height={30} alt="Microphone icons" />
+                    {/* <span className={`${styles.icons} ${styles.FaMicrophone}`}></span> */}
                   </a>
                 ) : (
-                  <div className="record-controller">
-                    <a
-                      onClick={e => this.stopRecording(e)}
-                      href=" #"
-                      className="icons stop"
-                    >
-                      <FaStop />
-                    </a>
-                    <a
-                      onClick={
-                        !pauseRecord
-                          ? e => this.handleAudioPause(e)
-                          : e => this.handleAudioStart(e)
-                      }
-                      href=" #"
-                      className="icons pause"
-                    >
-                      {pauseRecord ? <FaPlay /> : <FaPause />}
-                    </a>
-                  </div>
-                )}
+                    <div className={styles.record_controller}>
+                      <a
+                        onClick={e => this.stopRecording(e)}
+                        href=" #"
+                        className={`${styles.icons} ${styles.stop}`}
+                      >
+                        <img src={stopIcon} width={20} height={20} alt="Stop icons" />
+
+                        {/* <span className={`${styles.icons} ${styles.FaStop}`}></span> */}
+                      </a>
+                      <a
+                        onClick={
+                          !pauseRecord
+                            ? e => this.handleAudioPause(e)
+                            : e => this.handleAudioStart(e)
+                        }
+                        href=" #"
+                        className={`${styles.icons} ${styles.pause}`}
+                      >
+                        {pauseRecord ? <img src={playIcons} width={20} height={20} alt="Play icons" /> : <img src={pauseIcons} width={20} height={20} alt="Pause icons" />}
+                      </a>
+                    </div>
+                  )}
               </div>
             ) : (
-              <p style={{ color: "#fff", marginTop: 30, fontSize: 25 }}>
-                Seems the site is Non-SSL
+                <p style={{ color: "#fff", marginTop: 30, fontSize: 25 }}>
+                  Seems the site is Non-SSL
               </p>
-            )}
+              )}
           </div>
         </div>
       </div>

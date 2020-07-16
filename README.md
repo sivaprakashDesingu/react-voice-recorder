@@ -14,7 +14,10 @@ Checkout the [Demo](https://codesandbox.io/s/react-voice-recorder-mydov)
 
 # Import in your project file
 
-```import {Recorder} from 'react-voice-recorder'```
+```
+import {Recorder} from 'react-voice-recorder'
+import 'react-voice-recorder/dist/index.css'
+```
 
 # Declare inside the render menthod
 
