@@ -1,15 +1,10 @@
 import React, { Component } from "react";
-import microphone from './../imgs/microphone.png'
-import stopIcon from './../imgs/stop.png'
-import pauseIcons  from './../imgs/pause.png'
-import playIcons from './../imgs/play-button.png'
-import closeIcons from './../imgs/close.png'
-/*import { FaMicrophone } from "react-icons/fa";
-import { FaTimes } from "react-icons/fa";
-import { FaStop } from "react-icons/fa";
-import { FaPause } from "react-icons/fa";
-import { FaPlay } from "react-icons/fa";*/
-import styles from './../styles.module.css'
+import microphone from './../imgs/microphone.png';
+import stopIcon from './../imgs/stop.png';
+import pauseIcons  from './../imgs/pause.png';
+import playIcons from './../imgs/play-button.png';
+import closeIcons from './../imgs/close.png';
+import styles from './../styles.module.css';
 const audioType = "audio/*";
 
 class Recorder extends Component {
@@ -119,7 +114,8 @@ class Recorder extends Component {
     this.saveAudio();
   }
 
-  handleRest() {
+  handleRest(e) {
+    
     this.setState({
       time: {},
       seconds: 0,
@@ -128,8 +124,11 @@ class Recorder extends Component {
       medianotFound: false,
       audios: [],
       audioBlob: null
+    },()=>{
+      this.stopRecording(e);
+      this.props.handleRest(this.state);
     });
-    this.props.handleRest(this.state);
+    
   }
 
   saveAudio() {
@@ -155,12 +154,13 @@ class Recorder extends Component {
       <div className={styles.recorder_library_box}>
         <div className={styles.recorder_box}>
           <div className={styles.recorder_box_inner}>
+            {!this.props.hideHeader ?
             <div className={styles.reco_header}>
               <h2 className={styles.h2}>{title}</h2>
               <span className={styles.close_icons}>
               <img src={closeIcons} width={20} height={20} alt="Close icons" />
               </span>
-            </div>
+            </div> : null }
             {!medianotFound ? (
               <div className={styles.record_section}>
                 <div className={styles.btn_wrapper}>
@@ -173,7 +173,7 @@ class Recorder extends Component {
                     Upload
                   </button>
                   <button
-                    onClick={() => this.handleRest()}
+                    onClick={(e) => this.handleRest(e)}
                     className={`${styles.btn} ${styles.clear_btn}`}
                   >
                     Clear
@@ -252,3 +252,7 @@ class Recorder extends Component {
 }
 
 export default Recorder;
+
+Recorder.defaultProps = {
+  hideHeader:false  
+}
