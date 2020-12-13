@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import microphone from './../imgs/microphone.png';
+import microphone from './../imgs/microphone.svg';
 import stopIcon from './../imgs/stop.png';
-import pauseIcons  from './../imgs/pause.png';
+import pauseIcons from './../imgs/pause.png';
 import playIcons from './../imgs/play-button.png';
 import closeIcons from './../imgs/close.png';
-import styles from './../styles.module.css';
+import styles from '../styles.module.css';
 const audioType = "audio/*";
 
 class Recorder extends Component {
@@ -115,7 +115,9 @@ class Recorder extends Component {
   }
 
   handleRest(e) {
-    
+    if (this.state.recording) {
+      this.stopRecording(e);
+    }
     this.setState({
       time: {},
       seconds: 0,
@@ -124,11 +126,11 @@ class Recorder extends Component {
       medianotFound: false,
       audios: [],
       audioBlob: null
-    },()=>{
-      this.stopRecording(e);
+    }, () => {
+
       this.props.handleRest(this.state);
     });
-    
+
   }
 
   saveAudio() {
@@ -150,17 +152,19 @@ class Recorder extends Component {
   render() {
     const { recording, audios, time, medianotFound, pauseRecord } = this.state;
     const { showUIAudio, title, audioURL } = this.props;
+    //console.log(microphone)
     return (
       <div className={styles.recorder_library_box}>
         <div className={styles.recorder_box}>
           <div className={styles.recorder_box_inner}>
             {!this.props.hideHeader ?
-            <div className={styles.reco_header}>
-              <h2 className={styles.h2}>{title}</h2>
-              <span className={styles.close_icons}>
-              <img src={closeIcons} width={20} height={20} alt="Close icons" />
-              </span>
-            </div> : null }
+              <div className={styles.reco_header}>
+                <h2 className={styles.h2}>{title}</h2>
+                <span className={styles.close_icons}>
+
+                  {/* <img src={closeIcons} width={20} height={20} alt="Close icons" /> */}
+                </span>
+              </div> : null}
             {!medianotFound ? (
               <div className={styles.record_section}>
                 <div className={styles.btn_wrapper}>
@@ -211,8 +215,15 @@ class Recorder extends Component {
                     href=" #"
                     className={styles.mic_icon}
                   >
-                    <img src={microphone} width={30} height={30} alt="Microphone icons" />
-                    {/* <span className={`${styles.icons} ${styles.FaMicrophone}`}></span> */}
+                    {/* <img src={microphone} width={30} height={30} alt="Microphone icons" /> */}
+                    <span className={styles.microphone_icon_sec}>
+                      <svg className={styles.mic_icon_svg}  version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1000 1000" enableBackground="new 0 0 1000 1000" >
+                        <g>
+                          <path d="M500,683.8c84.6,0,153.1-68.6,153.1-153.1V163.1C653.1,78.6,584.6,10,500,10c-84.6,0-153.1,68.6-153.1,153.1v367.5C346.9,615.2,415.4,683.8,500,683.8z M714.4,438.8v91.9C714.4,649,618.4,745,500,745c-118.4,0-214.4-96-214.4-214.4v-91.9h-61.3v91.9c0,141.9,107.2,258.7,245,273.9v124.2H346.9V990h306.3v-61.3H530.6V804.5c137.8-15.2,245-132.1,245-273.9v-91.9H714.4z" />
+                        </g>
+                      </svg>
+
+                    </span>
                   </a>
                 ) : (
                     <div className={styles.record_controller}>
@@ -221,7 +232,8 @@ class Recorder extends Component {
                         href=" #"
                         className={`${styles.icons} ${styles.stop}`}
                       >
-                        <img src={stopIcon} width={20} height={20} alt="Stop icons" />
+                        <span className={styles.stop_icon}></span>
+                        {/* <img src={stopIcon} width={20} height={20} alt="Stop icons" /> */}
 
                         {/* <span className={`${styles.icons} ${styles.FaStop}`}></span> */}
                       </a>
@@ -234,7 +246,9 @@ class Recorder extends Component {
                         href=" #"
                         className={`${styles.icons} ${styles.pause}`}
                       >
-                        {pauseRecord ? <img src={playIcons} width={20} height={20} alt="Play icons" /> : <img src={pauseIcons} width={20} height={20} alt="Pause icons" />}
+                        {pauseRecord ?
+                          <span className={styles.play_icons}></span> :
+                          <span className={styles.pause_icons}></span>}
                       </a>
                     </div>
                   )}
@@ -242,7 +256,7 @@ class Recorder extends Component {
             ) : (
                 <p style={{ color: "#fff", marginTop: 30, fontSize: 25 }}>
                   Seems the site is Non-SSL
-              </p>
+                </p>
               )}
           </div>
         </div>
@@ -254,5 +268,5 @@ class Recorder extends Component {
 export default Recorder;
 
 Recorder.defaultProps = {
-  hideHeader:false  
+  hideHeader: false
 }

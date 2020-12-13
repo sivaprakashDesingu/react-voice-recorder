@@ -1,6 +1,6 @@
 {
   "name": "react-voice-recorder",
-  "version": "2.0.2",
+  "version": "2.0.7",
   "description": "This (react-voice-recorder) is a JavaScript library for React Applicaiton which will be used to record voice as audio and download the same.",
   "author": "Sivaprakash Desingu",
   "license": "MIT",
@@ -8,7 +8,7 @@
     "type": "git",
     "url": "https://github.com/sivaprakashDesingu/react-voice-recorder"
   },
-  "homepage": "https://www.npmjs.com/package/react-voice-recorders",
+  "homepage": "https://www.npmjs.com/package/react-voice-recorder",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
