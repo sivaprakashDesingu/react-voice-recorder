@@ -108,7 +108,7 @@ class Recorder extends Component {
     // stop the recorder
     this.mediaRecorder.stop();
     // say that we're not recording
-    this.setState({ recording: false });
+    this.setState({ recording: false, pauseRecord: false, });
     // save the video to memory
     this.saveAudio();
   }
