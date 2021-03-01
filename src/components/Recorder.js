@@ -70,7 +70,7 @@ class Recorder extends Component {
   }
 
   async componentDidMount() {
-    console.log(navigator.mediaDevices);
+//     console.log(navigator.mediaDevices);
     navigator.getUserMedia =
       navigator.getUserMedia ||
       navigator.webkitGetUserMedia ||
