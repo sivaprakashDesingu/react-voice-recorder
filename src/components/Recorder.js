@@ -113,7 +113,7 @@ class Recorder extends Component {
     this.saveAudio();
   }
 
-  handleRest(e) {
+  handleReset(e) {
     if (this.state.recording) {
       this.stopRecording(e);
     }
@@ -126,7 +126,7 @@ class Recorder extends Component {
       audioBlob: null
     }, () => {
 
-      this.props.handleRest(this.state);
+      this.props.handleReset(this.state);
     });
 
   }
