@@ -13,7 +13,6 @@ class Recorder extends Component {
     this.state = {
       time: {},
       seconds: 0,
-      isPaused: false,
       recording: false,
       medianotFound: false,
       audios: [],
@@ -109,7 +108,7 @@ class Recorder extends Component {
     // stop the recorder
     this.mediaRecorder.stop();
     // say that we're not recording
-    this.setState({ recording: false });
+    this.setState({ recording: false, pauseRecord: false, });
     // save the video to memory
     this.saveAudio();
   }
@@ -121,7 +120,6 @@ class Recorder extends Component {
     this.setState({
       time: {},
       seconds: 0,
-      isPaused: false,
       recording: false,
       medianotFound: false,
       audios: [],
