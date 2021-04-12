@@ -27,7 +27,7 @@ class App extends React.Component {
   handleAudioUpload(file) {
     console.log(file);
   }
-  handleRest() {
+  handleReset() {
     const reset = {
       url: null,
       blob: null,
@@ -49,7 +49,7 @@ class App extends React.Component {
         showUIAudio
         handleAudioStop={data => this.handleAudioStop(data)}
         handleAudioUpload={data => this.handleAudioUpload(data)}
-        handleRest={() => this.handleRest()}
+        handleReset={() => this.handleReset()}
       />
     )
   }

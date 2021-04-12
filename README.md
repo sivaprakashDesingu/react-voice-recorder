@@ -42,7 +42,7 @@ handleAudioStop(data){
 handleAudioUpload(file) {
     console.log(file);
 }
-handleRest() {
+handleReset() {
     const reset = {
       url: null,
       blob: null,
@@ -63,7 +63,7 @@ handleRest() {
     showUIAudio
     handleAudioStop={data => this.handleAudioStop(data)}
     handleAudioUpload={data => this.handleAudioUpload(data)}
-    handleRest={() => this.handleRest()} 
+    handleReset={() => this.handleReset()} 
 />
 
 ```

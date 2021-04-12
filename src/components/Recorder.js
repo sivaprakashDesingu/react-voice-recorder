@@ -175,7 +175,7 @@ class Recorder extends Component {
                     Upload
                   </button>
                   <button
-                    onClick={(e) => this.handleRest(e)}
+                    onClick={(e) => this.handleReset(e)}
                     className={`${styles.btn} ${styles.clear_btn}`}
                   >
                     Clear
