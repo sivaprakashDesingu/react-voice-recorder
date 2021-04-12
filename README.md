@@ -75,6 +75,7 @@ Common props you may want to specify include:
 
 - `record` - Flag 
 - `title` - Title for the Model
+- `hideHeader` - To hide the header which showing title
 - `audioURL` - To hear what has been recorded.
 - `showUIAudio` - Either need to show HTML5 audio tag after stopped or not.
 - `handleAudioStop` - Once your are stop the record, this will send your the data to process. further
