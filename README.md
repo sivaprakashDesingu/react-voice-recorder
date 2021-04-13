@@ -80,6 +80,7 @@ Common props you may want to specify include:
 - `showUIAudio` - Either need to show HTML5 audio tag after stopped or not.
 - `handleAudioStop` - Once your are stop the record, this will send your the data to process. further
 - `handleAudioUpload` - Onced click the upload button, Blob will be passed via props 
+- `uploadButtonDisabled` *(optional)* - When set to true, the upload button is disabled 
 - `mimeTypeToUseWhenRecording` *(optional)* - Specify the MIME type you want to use when recording. If none specified, the browser's default will be used.
   - `audio/ogg` for Firefox
   - `audio/webm` for Chrome
