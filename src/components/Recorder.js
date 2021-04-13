@@ -69,7 +69,6 @@ class Recorder extends Component {
   }
 
   async componentDidMount() {
-//     console.log(navigator.mediaDevices);
     navigator.getUserMedia =
       navigator.getUserMedia ||
       navigator.webkitGetUserMedia ||
@@ -150,7 +149,7 @@ class Recorder extends Component {
   render() {
     const { recording, audios, time, medianotFound, pauseRecord } = this.state;
     const { showUIAudio, title, audioURL } = this.props;
-    //console.log(microphone)
+
     return (
       <div className={styles.recorder_library_box}>
         <div className={styles.recorder_box}>
