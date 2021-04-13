@@ -175,6 +175,7 @@ class Recorder extends Component {
                       this.props.handleAudioUpload(this.state.audioBlob)
                     }
                     className={`${styles.btn} ${styles.upload_btn}`}
+                    disabled={this.props.uploadButtonDisabled}
                   >
                     Upload
                   </button>
