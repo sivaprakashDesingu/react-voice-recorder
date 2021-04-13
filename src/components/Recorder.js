@@ -76,7 +76,12 @@ class Recorder extends Component {
       navigator.msGetUserMedia;
     if (navigator.mediaDevices) {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      this.mediaRecorder = new MediaRecorder(stream);
+
+      if(this.props.mimeTypeToUseWhenRecording) {
+        this.mediaRecorder = new MediaRecorder(stream, { mimeType: this.props.mimeTypeToUseWhenRecording });
+      } else {
+        this.mediaRecorder = new MediaRecorder(stream); 
+      }
       this.chunks = [];
       this.mediaRecorder.ondataavailable = e => {
         if (e.data && e.data.size > 0) {
