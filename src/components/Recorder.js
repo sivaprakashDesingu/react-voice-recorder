@@ -69,7 +69,6 @@ class Recorder extends Component {
   }
 
   async componentDidMount() {
-//     console.log(navigator.mediaDevices);
     navigator.getUserMedia =
       navigator.getUserMedia ||
       navigator.webkitGetUserMedia ||
@@ -174,6 +173,7 @@ class Recorder extends Component {
                       this.props.handleAudioUpload(this.state.audioBlob)
                     }
                     className={`${styles.btn} ${styles.upload_btn}`}
+                    disabled={this.props.uploadButtonDisabled}
                   >
                     Upload
                   </button>
