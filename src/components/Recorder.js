@@ -77,7 +77,11 @@ class Recorder extends Component {
       navigator.msGetUserMedia;
     if (navigator.mediaDevices) {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      this.mediaRecorder = new MediaRecorder(stream);
+      if(this.props.mimeTypeToUseWhenRecording) {
+        this.mediaRecorder = new MediaRecorder(stream, { mimeType: this.props.mimeTypeToUseWhenRecording });
+      } else {
+        this.mediaRecorder = new MediaRecorder(stream); 
+      }
       this.chunks = [];
       this.mediaRecorder.ondataavailable = e => {
         if (e.data && e.data.size > 0) {
@@ -150,7 +154,6 @@ class Recorder extends Component {
   render() {
     const { recording, audios, time, medianotFound, pauseRecord } = this.state;
     const { showUIAudio, title, audioURL } = this.props;
-    //console.log(microphone)
     return (
       <div className={styles.recorder_library_box}>
         <div className={styles.recorder_box}>
@@ -266,5 +269,6 @@ class Recorder extends Component {
 export default Recorder;
 
 Recorder.defaultProps = {
-  hideHeader: false
+  hideHeader: false,
+  mimeTypeToUseWhenRecording:null
 }

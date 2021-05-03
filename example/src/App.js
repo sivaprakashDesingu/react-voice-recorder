@@ -50,6 +50,7 @@ class App extends React.Component {
         handleAudioStop={data => this.handleAudioStop(data)}
         handleAudioUpload={data => this.handleAudioUpload(data)}
         handleReset={() => this.handleReset()}
+        mimeTypeToUseWhenRecording={`audio/webm`}
       />
     )
   }
