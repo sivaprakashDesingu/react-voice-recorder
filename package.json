@@ -1,6 +1,6 @@
 {
   "name": "react-voice-recorder",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "This (react-voice-recorder) is a JavaScript library for React Applicaiton which will be used to record voice as audio and download the same.",
   "author": "Sivaprakash Desingu",
   "license": "MIT",

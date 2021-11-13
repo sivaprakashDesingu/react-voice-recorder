@@ -110,6 +110,16 @@ class Recorder extends Component {
     e.preventDefault();
     // stop the recorder
     this.mediaRecorder.stop();
+    
+    if(this.mediaRecorder.getAudioTracks){
+      const tracks = this.mediaRecorder.getAudioTracks();
+      tracks.forEach((track) =>{
+        track.stop();
+      });
+    }else{
+      console.log("No Tracks Found")
+    }
+    
     // say that we're not recording
     this.setState({ recording: false, pauseRecord: false, });
     // save the video to memory
