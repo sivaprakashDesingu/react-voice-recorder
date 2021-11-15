@@ -103,7 +103,6 @@ class Recorder extends Component {
     }
   }
 
-
   async startRecording(e) {
     e.preventDefault();
     // wipe old data chunks
@@ -176,7 +175,10 @@ class Recorder extends Component {
 
   render() {
     const { recording, audios, time, medianotFound, pauseRecord } = this.state;
-    const { showUIAudio, title, audioURL } = this.props;
+    const { showUIAudio, title, audioURL, disableFullUI } = this.props;
+
+    if (disableFullUI) { return null; }
+
     return (
       <div className={styles.recorder_library_box}>
         <div className={styles.recorder_box}>
@@ -318,5 +320,5 @@ export default Recorder;
 
 Recorder.defaultProps = {
   hideHeader: false,
-  mimeTypeToUseWhenRecording: null
+  mimeTypeToUseWhenRecording: null,
 }
