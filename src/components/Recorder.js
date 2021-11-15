@@ -103,9 +103,6 @@ class Recorder extends Component {
     }
   }
 
-  async componentDidMount() {
-    await this.initRecorder();
-  }
 
   async startRecording(e) {
     e.preventDefault();
