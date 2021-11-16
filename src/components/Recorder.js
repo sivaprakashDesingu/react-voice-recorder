@@ -321,4 +321,5 @@ export default Recorder;
 Recorder.defaultProps = {
   hideHeader: false,
   mimeTypeToUseWhenRecording: null,
+  handleCountDown: (data) => {},
 }

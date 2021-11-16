@@ -39,9 +39,15 @@ handleAudioStop(data){
     console.log(data)
     this.setState({ audioDetails: data });
 }
+
 handleAudioUpload(file) {
     console.log(file);
 }
+
+handleCountDown(data) {
+    console.log(data);
+}
+
 handleReset() {
     const reset = {
       url: null,
@@ -63,6 +69,7 @@ handleReset() {
     showUIAudio
     handleAudioStop={data => this.handleAudioStop(data)}
     handleAudioUpload={data => this.handleAudioUpload(data)}
+    handleCountDown={data => this.handleCountDown(data)}
     handleReset={() => this.handleReset()}
     mimeTypeToUseWhenRecording={`audio/webm`} // For specific mimetype.
 />
@@ -81,6 +88,7 @@ Common props you may want to specify include:
 - `showUIAudio` - Either need to show HTML5 audio tag after stopped or not.
 - `handleAudioStop` - Once your are stop the record, this will send your the data to process. further
 - `handleAudioUpload` - Onced click the upload button, Blob will be passed via props 
+- `handleCountDown` - Transmits time every 100 milliseconds 
 - `uploadButtonDisabled` *(optional)* - When set to true, the upload button is disabled 
 - `mimeTypeToUseWhenRecording` *(optional)* - Specify the MIME type you want to use when recording. If none specified, the browser's default will be used.
   - `audio/ogg` for Firefox
